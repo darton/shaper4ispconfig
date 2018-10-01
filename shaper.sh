@@ -20,7 +20,7 @@ if [ "$1" = "start" ]; then
     tc qdisc add dev $LAN root handle 1:0 htb default 3 r2q 1
 
 #Limit dla interfejsu sieciowego
-    tc class add dev $LAN parent 1:0 classid 1:1 htb rate 9000Mbit ceil 90000Mbit $BURST quantum 1500
+    tc class add dev $LAN parent 1:0 classid 1:1 htb rate 9000Mbit ceil 9000Mbit $BURST quantum 1500
 
 #Limit dla wszystkich nie sklasyfikowanych
     tc class add dev $LAN parent 1:1 classid 1:3 htb rate 1Mbit ceil 50Mbit prio 7 $BURST quantum 1500
