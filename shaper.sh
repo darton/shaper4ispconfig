@@ -69,6 +69,7 @@ if [ "$1" = "start" ]; then
 
 fi
 
+
 if [ "$1" = "stats" ]; then
         currentdate=$(date "+%H:%M:%S-%d%m%Y")
         echo "Ruch wychodzący"
