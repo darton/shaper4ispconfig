@@ -49,7 +49,6 @@ if [ "$1" = "start" ]; then
     tc qdisc add dev $LAN parent 1:7 sfq perturb 10
     iptables -t mangle -A OUTPUT -o $LAN -p tcp --sport 22 -j CLASSIFY --set-class 1:7
 
-
 #Limit dla portu źródłowego 110,143,993,995
     tc class add dev $LAN parent 1:1 classid 1:8 htb rate 2Mbit ceil 100Mbit $BURST prio 4 quantum 1500
     tc qdisc add dev $LAN parent 1:8 sfq perturb 10
@@ -69,7 +68,6 @@ if [ "$1" = "start" ]; then
     iptables -t mangle -A OUTPUT -o $LAN -p tcp --sport 21 -j CLASSIFY --set-class 1:10
 
 fi
-
 
 if [ "$1" = "stats" ]; then
         currentdate=$(date "+%H:%M:%S-%d%m%Y")
